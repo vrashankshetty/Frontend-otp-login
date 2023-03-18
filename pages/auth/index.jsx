@@ -86,7 +86,7 @@ export default function index() {
                 </div>}
                 <Link href='/auth/password'>
                 <div className='mt-6 text-blue-600 cursor-pointer'>
-                    Forgot your password?
+                    Forgot your password?   
                 </div>
                 </Link>
             </div>
