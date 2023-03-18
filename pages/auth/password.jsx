@@ -5,8 +5,12 @@ export default function index() {
   const [newpassword,setNewpassword]=useState('')
   const [confirmpassword,setConfirmpassword]=useState('')
   const [error,setError]=useState(false)
+  const [user,setUser]=useState({});
   const router=useRouter()
-  let user=JSON.parse(localStorage.getItem("user"));
+  useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem("user")));
+  },[])
+
   const handlesubmit=()=>{
      if(newpassword==confirmpassword){
         setError(false)
@@ -29,7 +33,7 @@ export default function index() {
                 <div className="text-2xl md:text-3xl lg:text-4xl font-bold">Change Password</div>
                
                 <div className='bg-slate-100 w-full lg:w-3/4 flex flex-row justify-center mt-10 p-2 rounded-lg'>
-                    <input type="text" className='w-full bg-slate-100 h-10 p-2' placeholder='New password' value={newpassword} onChange={e=>{setNewpassword(e.target.value),setError(false)}} />
+                    <input type="password" className='w-full bg-slate-100 h-10 p-2' placeholder='New password' value={newpassword} onChange={e=>{setNewpassword(e.target.value),setError(false)}} />
                 </div>
                 <div className='bg-slate-100 w-full lg:w-3/4 flex flex-row justify-center mt-10 p-2 rounded-lg'>
                     <input type="password" className='w-full bg-slate-100 h-10 p-2' placeholder='Confirm password' value={confirmpassword} onChange={e=>{setConfirmpassword(e.target.value),setError(false)}} />
